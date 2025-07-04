@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MedTrack - Medicine Tracker</title>
+</head>
+<body>
+    <h1>Medicine List</h1>
+    <form action="/add" method="post">
+        <input type="text" name="name" placeholder="Medicine Name" required>
+        <input type="text" name="dosage" placeholder="Dosage (e.g., 1 tablet)" required>
+        <input type="text" name="time" placeholder="Time (e.g., Morning)" required>
+        <button type="submit">Add Medicine</button>
+    </form>
+
+    <ul>
+        {% for med in medicines %}
+            <li>
+                <strong>{{ med.name }}</strong> - {{ med.dosage }} at {{ med.time }}
+                <a href="/delete/{{ med.id }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
